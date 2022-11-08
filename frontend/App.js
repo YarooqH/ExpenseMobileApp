@@ -24,6 +24,8 @@ import History from './screens/History';
 import Expense from './screens/Expense';
 import Login from './screens/Login';
 import SignUp from './screens/SignUp';
+import Income from './screens/Income';
+import Transfer from './screens/Transfer';
 
 const Drawer = createDrawerNavigator();
 
@@ -52,6 +54,8 @@ const App = () => {
             <Drawer.Screen name="All Accounts" component={AllAccounts} />
             <Drawer.Screen name="History" component={History} />
             <Drawer.Screen name="Expense" component={Expense} />
+            <Drawer.Screen name="Income" component={Income} />
+            <Drawer.Screen name="Transfer" component={Transfer} />
             <Drawer.Screen name="Login" component={Login} />
             <Drawer.Screen name="SignUp" component={SignUp} />
           </Drawer.Navigator>

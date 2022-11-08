@@ -4,7 +4,7 @@ import { ToggleButton } from 'react-native-paper';
 import { StyleSheet, SafeAreaView, View, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { Text, RadioButton, Button } from 'react-native-paper';
 
-function Expense() {
+function Transfer() {
     const [value, setValue] = useState();
   return (
     <View style={{backgroundColor: 'black', height: '100%', paddingTop: 10, display: 'flex', alignItems:'center'}}>
@@ -15,7 +15,7 @@ function Expense() {
             activeUnderlineColor='#1ba0a5'
             style={{backgroundColor: 'black', width: 300}}
         />
-        <Text variant="displaySmall" style={{paddingTop: 30}}>Categories</Text>
+        <Text variant="displaySmall" style={{paddingTop: 30}}>Pay From</Text>
         <View style={{display: 'flex', flexDirection: 'row', marginTop: 20, height: 150, width: '100%', padding: 10}}>
             <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
             <ScrollView>
@@ -30,7 +30,7 @@ function Expense() {
             </ScrollView>
             </RadioButton.Group>
         </View>
-        <Text variant="displaySmall" style={{paddingTop: 30}}>Accounts</Text>
+        <Text variant="displaySmall" style={{paddingTop: 30}}>Pay To</Text>
         <View style={{display: 'flex', flexDirection: 'row', marginTop: 20, height: 200, width: '100%', padding: 10}}>
             <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
             <ScrollView>
@@ -52,4 +52,4 @@ function Expense() {
   )
 }
 
-export default Expense
+export default Transfer

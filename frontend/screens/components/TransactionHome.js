@@ -19,11 +19,6 @@ function TransactionHome() {
               <TransactionTile />
               <TransactionTile />
               <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
           </ScrollView>
         </SafeAreaView>
     </View>
