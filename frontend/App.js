@@ -16,16 +16,20 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+// import store from './redux/store';
 
 import Home from './screens/Home';
-import About from './screens/About';
+import AllAccounts from './screens/AllAccounts';
+import History from './screens/History';
+import Expense from './screens/Expense';
+import Login from './screens/Login';
+import SignUp from './screens/SignUp';
 
 const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
-    <Provider store = {store}>
+    // <Provider store = {store}>
       <PaperProvider>
         <NavigationContainer>
           <Drawer.Navigator screenOptions={{
@@ -34,19 +38,26 @@ const App = () => {
               backgroundColor: '#1ba0a5',
             },
             headerTitleStyle: {
-              color: 'white'
+              color: 'black'
             },
         drawerStyle: {
-          backgroundColor: 'white',
-          width: 250
+          backgroundColor: 'black',
+          width: 250,
         },
+        drawerLabelStyle:{
+          color:'white'
+        }
       }} initialRouteName="Home">
             <Drawer.Screen name="Home" component={Home} />
-            <Drawer.Screen name="About" component={About} />
+            <Drawer.Screen name="All Accounts" component={AllAccounts} />
+            <Drawer.Screen name="History" component={History} />
+            <Drawer.Screen name="Expense" component={Expense} />
+            <Drawer.Screen name="Login" component={Login} />
+            <Drawer.Screen name="SignUp" component={SignUp} />
           </Drawer.Navigator>
         </NavigationContainer>
       </PaperProvider>
-    </Provider>
+    // </Provider>
   );
 };
 
