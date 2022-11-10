@@ -4,7 +4,7 @@ import { ToggleButton } from 'react-native-paper';
 import { StyleSheet, SafeAreaView, View, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { Text, RadioButton, Button } from 'react-native-paper';
 
-function Expense() {
+function Expense({navigation}) {
     const [value, setValue] = useState();
   return (
     <View style={{backgroundColor: 'black', height: '100%', paddingTop: 10, display: 'flex', alignItems:'center'}}>

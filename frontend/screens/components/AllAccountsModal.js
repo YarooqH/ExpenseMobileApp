@@ -1,14 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Avatar, Card, Title, Paragraph, Button, Modal, Portal } from 'react-native-paper';
 
 import AllAccountsList from './AllAccountsList';
 
-function AllAccountsModal() {
+function AllAccountsModal(props) {
+    const [visible, setVisible] = useState(false);
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
   return (
-    <View style={{}}>
-    <Card style={{}}>
-      {/* <Card.Title title="Card Title" subtitle="Card Subtitle" /> */}
+    <View>
+        <Portal>
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={{backgroundColor: 'white', padding: 20}}>
+          <Text>Example Modal.  Click outside this area to dismiss.</Text>
+        </Modal>
+      </Portal>
+    <Card>
       <Card.Content>
       <View style={{display: 'flex', gap: 5, flexDirection: 'row', justifyContent:'space-between'}}>
           <Text style={{color: 'white', fontSize: 20}}>What You Have</Text>
