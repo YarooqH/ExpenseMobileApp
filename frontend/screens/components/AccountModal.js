@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useContext} from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, FlatList, ToastAndroid } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Avatar, Button, Card, Modal, Title, TextInput, Paragraph, Portal, IconButton, Provider, ActivityIndicator} from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -85,44 +85,63 @@ function AccountModal(props) {
     }
 }
 
+const checkIfAccountExists = (obj) => {
+  let status = true;
+  for (const bank of obj) {
+    console.log("name:" + bank.name);
+    console.log("newname:" + accountName);
+    if(bank.name == accountName){
+      status = false;
+      break;
+      // return status;
+    }
+  }
+  return status;
+}
+
   const makeAccount = async () => {
     console.log(accountName + ' : ' + accountBalance);
     // setHaveData(false);
-    if((accountName != '') && (accountBalance > 0)){
-      console.log(accountName + ' : ' + parseInt(accountBalance) + " : " + _userEmail);
-        try {
-          const response = await fetch("http://192.168.18.94:3000/bankaccounts/", {
-            headers: {
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify({
-                "email": _userEmail,
-                "name": accountName,
-                "amount": parseInt(accountBalance)
-            }),
-        });
-
-        const res = await response.json();
-        if(res){
-          getUserAccounts(_userEmail);
-          calculateBalance();
-          setUserBalance(parseInt(userBalance) + parseInt(accountBalance));
-          // setHaveData(true);
-          // calculateBalance();
+    let check = checkIfAccountExists(JSON.parse(_userBanks));
+    if(check){
+      if(((accountName != '') && (accountBalance > 0))){
+        console.log(accountName + ' : ' + parseInt(accountBalance) + " : " + _userEmail);
+          try {
+            const response = await fetch("http://192.168.18.94:3000/bankaccounts/", {
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              method: "POST",
+              body: JSON.stringify({
+                  "email": _userEmail,
+                  "name": accountName,
+                  "amount": parseInt(accountBalance)
+              }),
+          });
+  
+          const res = await response.json();
+          if(res){
+            getUserAccounts(_userEmail);
+            calculateBalance();
+            setUserBalance(parseInt(userBalance) + parseInt(accountBalance));
+            // setHaveData(true);
+            // calculateBalance();
+          }
+          // setAccountBalance('');
+          // setAccountName('');
+          console.log("Added");
+        } catch (e) {
+            return e;
         }
-        // setAccountBalance('');
-        // setAccountName('');
-        console.log("Added");
-      } catch (e) {
-          return e;
+      } else {
+        setToastMsg("Please Enter Proper Details")
+        setShowToast(true);
+        console.log('Error')
       }
     } else {
-      setToastMsg("Please Enter Proper Details")
+      setToastMsg('Account Already Exists!');
       setShowToast(true);
-      console.log('Error')
     }
-
   }
 
   if(haveData){

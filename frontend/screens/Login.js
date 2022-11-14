@@ -73,9 +73,9 @@ function Login({navigation}) {
   }
   
   const checkUserSession = () => {
-    let res = getSession();
+    // let res = getSession();
     if (res) {
-      deleteSession("user");
+      // deleteSession("user");
       dispatchUserEvent("REMOVE_USER_EMAIL");
       dispatchUserEvent("REMOVE_USER_TRANSACTIONS");
       dispatchUserEvent("REMOVE_USER_CATEGORIES");
@@ -150,15 +150,6 @@ const getUserCategories = async(userData) => {
               let userTransactions_ = getUserTransactions(email);
               let userCategories_ = getUserCategories(email);
               // setSession(email);
-              // try{
-                // await AsyncStorage.setItem("user", JSON.stringify(email));
-                // await AsyncStorage.setItem("userAccounts", JSON.stringify(userAccounts));
-                // await AsyncStorage.setItem("userTransactions", JSON.stringify(userTransactions));
-              // } catch(e) {
-              //   console.log(e);
-              // }
-              // console.log(trigger);
-              // if(trigger){
                 setLoading(true);
                 setTimeout(()=>{
                   console.log(email, banks, transactions, cats);
@@ -226,10 +217,9 @@ const getUserCategories = async(userData) => {
               Log in
           </Button>
           <Toast visible={showToast} message={toastMsg}/>
-          {/* {setLoading(false)} */}
       </View>
     )
   }
 }
 
-export default Login;
+export default Login
