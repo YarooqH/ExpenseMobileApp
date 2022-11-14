@@ -13,12 +13,11 @@ function TransactionHome(props) {
         </View>
         <SafeAreaView style={{ flex:1, paddingBottom: 300}}>
           <ScrollView>
-              <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
-              <TransactionTile />
+            {props.transactions.length > 0 ? props.transactions.map((t, index) => {
+              return(
+                <TransactionTile key={index} type={t.type} category={t.category} amount={t.amount} from={t.from} date={t.date} />
+              );
+            }) : <Text style={{paddingTop: 150, color: 'grey', fontSize: 20, fontWeight: "600", textAlign: 'center'}}>No Transactions Made Yet</Text>}
           </ScrollView>
         </SafeAreaView>
     </View>
