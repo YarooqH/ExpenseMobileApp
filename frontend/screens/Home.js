@@ -20,10 +20,9 @@ function Home({ navigation }) {
   // const [_userTransactions, setUserTransactions] = useState([]);
   // const [_userData, setUserData] = useState('');
 
-  // useEffect(() => {
-  //   getUser();
-  //   getUserData();
-  // }, [])
+  useEffect(() => {
+    setIsLoading(true);
+  }, [isLoading]);
 
   // const getUser = async() => {
     // setUserBanks(userBanks);

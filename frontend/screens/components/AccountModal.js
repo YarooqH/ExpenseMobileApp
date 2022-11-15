@@ -88,8 +88,8 @@ function AccountModal(props) {
 const checkIfAccountExists = (obj) => {
   let status = true;
   for (const bank of obj) {
-    console.log("name:" + bank.name);
-    console.log("newname:" + accountName);
+    // console.log("name:" + bank.name);
+    // console.log("newname:" + accountName);
     if(bank.name == accountName){
       status = false;
       break;

@@ -1,8 +1,12 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import TransactionTile from './TransactionTile';
 
+import {AppContext} from '../../context';
+
 function TransactionHome(props) {
+  // const {_userTransactions} = useContext(AppContext);
+
   return (
     <View style={{marginTop: 120, backgroundColor: 'black', paddingTop: 10}}>
         <View style={{display: 'flex',flexDirection: 'row' , justifyContent: 'space-around', width: 400, marginBottom: 20}}>

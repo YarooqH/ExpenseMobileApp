@@ -43,6 +43,7 @@ function Login({navigation}) {
 
   useEffect(() => {
     setShowToast(false);
+    // setLoading(false);
     // checkUserSession();
     // if(loggedOff){
     //   deleteSession();
